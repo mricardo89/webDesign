@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Opción 1: Elemental</title>
+    <style>
+        /* Reset básico */
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center; /* Centra el póster en la pantalla */
+            align-items: center;
+            background-color: #333; /* Fondo oscuro para que resalte el póster */
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+
+        /* EL LIENZO (El Poster) */
+        .poster {
+            width: 400px;
+            height: 600px;
+            background-color: #F2F0E4; /* Color Crema */
+            position: relative; /* IMPORTANTE: Define los límites para los hijos absolutos */
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+            overflow: hidden; /* Corta lo que se salga del póster */
+        }
+
+        /* El Círculo Rojo */
+        .circulo {
+            width: 250px;
+            height: 250px;
+            background-color: #D92525;
+            border-radius: 50%; /* Convierte el cuadrado en círculo */
+            
+            /* Técnica clásica de centrado absoluto */
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%); /* Mueve el elemento a su propio centro */
+        }
+
+        /* La Barra Negra Transparente */
+        .barra {
+            width: 100%; /* Ocupa todo el ancho */
+            height: 40px;
+            background-color: #1A1A1A;
+            opacity: 0.8; /* Transparencia del 80% */
+            
+            position: absolute;
+            top: 55%; /* Un poco más abajo del centro */
+            left: 0;
+        }
+
+        /* El Texto Vertical */
+        .texto {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #1A1A1A;
+            letter-spacing: 5px;
+            
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            
+            /* Rotación del texto para estilo Bauhaus */
+            writing-mode: vertical-rl; 
+            transform: rotate(180deg); 
+        }
+    </style>
+</head>
+<body>
+    <div class="poster">
+        <div class="circulo"></div>
+        <div class="barra"></div>
+        <div class="texto">BAUHAUS</div>
+    </div>
+</body>
+</html>

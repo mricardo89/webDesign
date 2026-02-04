@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Opción 3: Retícula Suiza</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #ddd;
+            font-family: 'Helvetica', 'Arial', sans-serif; /* La fuente Suiza por excelencia */
+        }
+
+        .poster {
+            width: 400px;
+            height: 600px;
+            background-color: #FFFFFF;
+            position: relative;
+            box-shadow: 0 0 30px rgba(0,0,0,0.2);
+            /* Grid invisible para alinear el texto (opcional pero recomendado) */
+            padding: 40px;
+            box-sizing: border-box; 
+        }
+
+        /* Estilo base para todos los círculos */
+        .circulo {
+            border-radius: 50%;
+            position: absolute;
+            /* PRO TIP: Multiply hace que los colores se sumen como tinta real */
+            mix-blend-mode: multiply; 
+        }
+
+        .c1 {
+            width: 200px;
+            height: 200px;
+            background-color: #001F54; /* Azul Marino */
+            top: 50px;
+            left: -30px; /* Se sale un poco a la izquierda */
+            z-index: 1;
+        }
+
+        .c2 {
+            width: 200px;
+            height: 200px;
+            background-color: #00A8E8; /* Cian */
+            top: 120px;
+            left: 80px;
+            z-index: 2;
+        }
+
+        .c3 {
+            width: 100px;
+            height: 100px;
+            background-color: #CCCCCC; /* Gris */
+            top: 250px;
+            left: 40px;
+            z-index: 3;
+        }
+
+        /* Bloque de texto alineado a la retícula */
+        .info {
+            position: absolute;
+            bottom: 40px;
+            right: 40px;
+            text-align: right;
+            width: 200px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin: 0;
+            line-height: 0.9;
+            letter-spacing: -2px; /* Apretado estilo suizo */
+            color: #333;
+        }
+
+        p {
+            font-size: 0.8rem;
+            margin-top: 10px;
+            color: #666;
+            line-height: 1.4;
+        }
+        
+        .linea-separadora {
+            width: 50px;
+            height: 4px;
+            background-color: #333;
+            margin-left: auto; /* Truco flex/block para alinear a la derecha */
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="poster">
+        <div class="circulo c1"></div>
+        <div class="circulo c2"></div>
+        <div class="circulo c3"></div>
+
+        <div class="info">
+            <div class="linea-separadora"></div>
+            <h1>MÜLLER<br>BROCK<br>MANN</h1>
+            <p>Zurich Tonhalle<br>Gesellschaft<br>1955</p>
+        </div>
+    </div>
+</body>
+</html>

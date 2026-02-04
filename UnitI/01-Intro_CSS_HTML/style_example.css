@@ -1,0 +1,35 @@
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center; /* Centra el póster en la pantalla */
+    align-items: center;
+    background-color: #333; /* Fondo oscuro para que resalte el póster */
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+ 
+ 
+/* EL LIENZO (El Poster) */
+.poster {
+    width: 600px;
+    height: 400px;
+    background-color: #F2F0E4; 
+    position: relative; /* IMPORTANTE: Define los límites para los hijos absolutos */
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    overflow: hidden; /* Corta lo que se salga del póster */
+}
+ 
+ 
+/* El Círculo Rojo */
+#circulo {
+    width: 250px;
+    height: 250px;
+    background-color: #D92525;
+    border-radius: 50%; /* Convierte el cuadrado en círculo */
+    
+    /* Técnica clásica de centrado absoluto */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Mueve el elemento a su propio centro */
+}
