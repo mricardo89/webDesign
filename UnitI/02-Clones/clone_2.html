@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Opción 3: Retícula Suiza</title>
+    <title>Opción 2: Tensión Diagonal</title>
     <style>
         body {
             margin: 0;
@@ -10,100 +10,81 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: #ddd;
-            font-family: 'Helvetica', 'Arial', sans-serif; /* La fuente Suiza por excelencia */
+            background-color: #111;
+            font-family: Arial, sans-serif;
         }
 
         .poster {
             width: 400px;
             height: 600px;
-            background-color: #FFFFFF;
+            background-color: #2E2E2E; /* Gris Oscuro */
             position: relative;
-            box-shadow: 0 0 30px rgba(0,0,0,0.2);
-            /* Grid invisible para alinear el texto (opcional pero recomendado) */
-            padding: 40px;
-            box-sizing: border-box; 
+            overflow: hidden; /* VITAL: Corta las líneas que se salen */
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
         }
 
-        /* Estilo base para todos los círculos */
-        .circulo {
-            border-radius: 50%;
-            position: absolute;
-            /* PRO TIP: Multiply hace que los colores se sumen como tinta real */
-            mix-blend-mode: multiply; 
-        }
-
-        .c1 {
+        /* El Cuadrado Naranja Rotado */
+        .rombo {
             width: 200px;
             height: 200px;
-            background-color: #001F54; /* Azul Marino */
-            top: 50px;
-            left: -30px; /* Se sale un poco a la izquierda */
+            background-color: #E07A5F;
+            
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            /* Rotamos 45 grados y ajustamos el centro */
+            transform: translate(-50%, -50%) rotate(45deg); 
+            z-index: 2; /* Para que quede encima de las líneas */
+        }
+
+        /* Estilo compartido para las líneas */
+        .linea {
+            height: 4px; /* Grosor de la línea */
+            width: 800px; /* Muy larga para asegurar que cruce todo */
+            background-color: white;
+            position: absolute;
+            top: 50%;
+            left: 50%;
             z-index: 1;
         }
 
-        .c2 {
-            width: 200px;
-            height: 200px;
-            background-color: #00A8E8; /* Cian */
-            top: 120px;
-            left: 80px;
-            z-index: 2;
+        /* Línea 1: Sigue la diagonal principal */
+        .linea-1 {
+            transform: translate(-50%, -50%) rotate(45deg);
         }
 
-        .c3 {
-            width: 100px;
-            height: 100px;
-            background-color: #CCCCCC; /* Gris */
-            top: 250px;
-            left: 40px;
-            z-index: 3;
+        /* Línea 2: La diagonal opuesta (perpendicular) */
+        .linea-2 {
+            transform: translate(-50%, -50%) rotate(-45deg);
         }
 
-        /* Bloque de texto alineado a la retícula */
-        .info {
+        .texto {
+            font-size: 8rem;
+            color: rgba(255, 255, 255, 0.1); /* Texto sutil de fondo */
+            font-weight: 900;
             position: absolute;
-            bottom: 40px;
-            right: 40px;
-            text-align: right;
-            width: 200px;
-        }
-
-        h1 {
-            font-size: 3rem;
-            margin: 0;
-            line-height: 0.9;
-            letter-spacing: -2px; /* Apretado estilo suizo */
-            color: #333;
-        }
-
-        p {
-            font-size: 0.8rem;
-            margin-top: 10px;
-            color: #666;
-            line-height: 1.4;
+            top: 10%;
+            left: 50%;
+            transform: translateX(-50%) rotate(45deg);
         }
         
-        .linea-separadora {
-            width: 50px;
-            height: 4px;
-            background-color: #333;
-            margin-left: auto; /* Truco flex/block para alinear a la derecha */
-            margin-bottom: 10px;
+        .anio {
+            color: #FFF;
+            font-size: 2rem;
+            position: absolute;
+            bottom: 30px;
+            right: 30px;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
     <div class="poster">
-        <div class="circulo c1"></div>
-        <div class="circulo c2"></div>
-        <div class="circulo c3"></div>
-
-        <div class="info">
-            <div class="linea-separadora"></div>
-            <h1>MÜLLER<br>BROCK<br>MANN</h1>
-            <p>Zurich Tonhalle<br>Gesellschaft<br>1955</p>
-        </div>
+        <div class="texto">ART</div>
+        <div class="linea linea-1"></div>
+        <div class="linea linea-2"></div>
+        <div class="rombo"></div>
+        <div class="anio">1923</div>
     </div>
 </body>
 </html>
