@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Clase 3.2: DOM</title>
+    <style>
+        body { font-family: sans-serif; transition: 0.5s; text-align: center; padding-top: 50px; }
+        img { width: 300px; border-radius: 10px; margin-top: 20px; }
+        button { padding: 10px 20px; font-size: 1rem; cursor: pointer; margin: 5px; }
+    </style>
+</head>
+<body>
+
+    <h1 id="mensaje">¿Cómo te sientes hoy?</h1>
+
+    <img id="meme" src="https://via.placeholder.com/300?text=Neutral" alt="Estado de ánimo">
+
+    <br><br>
+
+    <button onclick="ponerFeliz()">😄 Feliz</button>
+    <button onclick="ponerTriste()">😢 Triste</button>
+    <button onclick="ponerEnojado()">😠 Enojado</button>
+
+    <script>
+        // Función 1: Cambiar a Feliz
+        function ponerFeliz() {
+            // Cambiar Texto
+            document.getElementById("mensaje").innerHTML = "¡Estoy genial!";
+            document.getElementById("mensaje").style.color = "#4CAF50"; // Verde
+            
+            // Cambiar Imagen (Ojo con el .src)
+            document.getElementById("meme").src = "https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif"; 
+        }
+
+        // Función 2: Cambiar a Triste
+        function ponerTriste() {
+            document.getElementById("mensaje").innerHTML = "Hoy no es mi día...";
+            document.getElementById("mensaje").style.color = "#2196F3"; // Azul
+            document.getElementById("meme").src = "https://media.giphy.com/media/OPU6wzx8JrHna/giphy.gif";
+        }
+
+
+
+        // Función 3: Cambiar a Enojado
+        function ponerEnojado() {
+            document.getElementById("mensaje").innerHTML = "Pensamientos intrusivos...";
+            document.getElementById("mensaje").style.color = "#FF0000"; // Azul
+            document.getElementById("meme").src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTndW2-R6eAiwFKPnuHEHcSQ7MJIyo5WrOOag&s";
+        }
+
+        // Función 3: Manipular el Body entero
+        function modoOscuro() {
+            document.body.style.backgroundColor = "#222";
+            document.body.style.color = "white";
+        }
+    </script>
+</body>
+</html>

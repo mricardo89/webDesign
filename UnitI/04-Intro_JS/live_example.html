@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>Live example</title>
+    </head>
+
+    <body>
+       
+        <h1 id="titulo-principal">Hola, soy estático</h1>
+        <button onclick="cambiarTitulo()">¡Púchale!</button>
+
+    </body>
+
+    <script>
+        function cambiarTitulo() {
+            // Paso 1: Lanzar el gancho y atrapar el elemento
+            let elemento = document.getElementById("titulo-principal");
+            
+            // Paso 2: Modificar su propiedad interna
+            elemento.innerHTML = "¡Ahora soy DINÁMICO!";
+            elemento.style.color = "red";
+        }
+    </script>
+</html>

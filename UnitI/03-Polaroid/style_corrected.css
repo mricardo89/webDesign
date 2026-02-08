@@ -1,0 +1,25 @@
+body
+{
+    background-color: #222; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    height: 100vh;
+}
+
+.polaroid {
+    background-color: white;
+    width: 300px;
+    padding: 15px;          /* Marco superior y lados */
+    padding-bottom: 60px;   /* Espacio extra para el texto */
+    box-shadow: 10px 10px 20px rgba(0,0,0,0.5); /* Sombra realista */
+    transform: rotate(-5deg); /* Toque "natural" */
+    text-align: center;
+    font-family: 'Brush Script MT', cursive;
+    color: #333;
+}
+/* Opcional: Para que la imagen no se salga si cambian el tamaño */
+.polaroid img {
+    width: 100%; 
+    display: block;
+}
