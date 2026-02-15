@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <title>Portafolio | Profesor de Diseño Web</title>
+    <style>
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Miguel Ricardo González Márquez</h1>
+        
+        <nav>
+            <ul>
+                <li><a href="#hero">Inicio</a></li>
+                <li><a href="#sobre-mi">Sobre mí</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+
+        <button onclick="alternarTema()">🌙 Cambiar Tema</button>
+    </header>
+
+    <main>
+        <div>
+            
+            <section id="hero">
+                <h2>Profesor de Código & Diseño</h2>
+                <img src="avatar.png" alt="Avatar del Profe">
+                <p>Amante del color azul y fiel creyente de que la programación es la herramienta más creativa que existe.</p>
+            </section>
+
+            <section id="sobre-mi">
+                <h2>Mi Cuartel General</h2>
+                <p>Este sitio es un ejemplo de cómo estructurar información con HTML5 semántico y CSS básico. ¡Menos es más!</p>
+            </section>
+
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2026 Programación de Sitios Dinámicos</p>
+    </footer>
+
+    <script>
+        function alternarTema() {
+            // 1. Atrapamos el body del documento
+            let cuerpo = document.body;
+            
+            // 2. Usamos toggle para prender o apagar la clase "modo-oscuro"
+            cuerpo.classList.toggle("modo-oscuro");
+        }
+    </script>
+
+</body>
+</html>
