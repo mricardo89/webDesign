@@ -2,17 +2,57 @@
 <html lang="es">
     <head>
         <meta charset="UTF-8">
-        
+        <link rel="stylesheet" href="style.css">
         <title>Simple calculator</title>
     </head>
 
     <body>
+        <div class="calculadora-card">
+            <input type="number" id="num1" placeholder="Número 1">
+            <input type="number" id="num2" placeholder="Número 2"> 
 
-        
+            <button onclick="sumar()">Sumar</button>
+            
+            <h2 id="resultado">Resultado: </h2>
+        </div>
 
     </body>
 
     <script>
+
+        function sumar()
+        {
+            let caja1 = document.getElementById("num1");
+            let numero1 = caja1.value;
+
+            let caja2 = document.getElementById("num2");
+            let numero2 = caja2.value;
+
+            // 2 === "2" -> False
+            // 2 == "2" -> True
+            let cajaResultado = document.getElementById("resultado");
+            if(numero1 === "" || numero2 === "")
+            {
+                cajaResultado.innerHTML = "Te faltan números"
+            }
+            else{
+
+                let cajaSuma = Number(numero1) + Number(numero2);
+
+                if(cajaSuma > 100){
+                    cajaResultado.innerHTML = "Resultado: " + cajaSuma + " es numero muy grande";
+                    cajaResultado.style.color = "red"
+                }
+                else if(cajaSuma < 0){
+                    cajaResultado.innerHTML = "Resultado: " + cajaSuma + " es bajo cero";
+                    cajaResultado.style.color = "blue"
+                }
+                else{
+                    cajaResultado.innerHTML = "Resultado: " + cajaSuma;
+                    cajaResultado.style.color = "green"
+                }
+            }  
+        }
         
     </script>
 </html>
