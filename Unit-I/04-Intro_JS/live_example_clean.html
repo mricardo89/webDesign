@@ -6,12 +6,21 @@
     </head>
 
     <body>
-       
+       <h1 id="titulo-principal">Hola, soy un texto estático</h1>
+       <button onclick="cambiarTitulo()">Dar click</button>
         
 
     </body>
 
     <script>
+
+        function cambiarTitulo()
+        {
+            let elemento_titulo = document.getElementById("titulo-principal");
+
+            elemento_titulo.innerHTML = "Ahora soy un texto dinámico";
+            elemento_titulo.style.color = "red";
+        }
       
     </script>
 </html>
