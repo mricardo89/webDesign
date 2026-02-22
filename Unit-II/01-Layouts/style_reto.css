@@ -1,0 +1,99 @@
+/* =========================================
+   RESET Y ESTILOS GLOBALES
+   ========================================= */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #e9ecef; /* Gris muy claro para el fondo */
+    color: #333333;
+}
+
+/* =========================================
+   1. FLEXBOX (La Cabecera y Menú)
+   ========================================= */
+.cabecera {
+    background-color: #ffffff;
+    padding: 20px 50px;
+    border-bottom: 2px solid #cccccc;
+    
+    /* Flexbox en acción */
+    display: flex;
+    justify-content: space-between; /* Separa el logo del menú */
+    align-items: center; /* Centra verticalmente */
+}
+
+.navegacion {
+    display: flex;
+    gap: 30px; /* Separa los enlaces sin usar margin */
+}
+
+.navegacion a {
+    text-decoration: none;
+    color: #333333;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* =========================================
+   2. CSS GRID (El esqueleto de la revista)
+   ========================================= */
+.contenedor-revista {
+    max-width: 1000px;
+    margin: 40px auto; /* Centra todo el bloque en la pantalla */
+    padding: 0 20px;
+    
+    /* Grid en acción */
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columnas del mismo tamaño */
+    gap: 20px; /* Espacio perfecto entre todas las cajas */
+}
+
+/* =========================================
+   3. BOX MODEL Y DISEÑO (Las Tarjetas)
+   ========================================= */
+.articulo {
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 10px; /* Esquinas redondeadas */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Sombra suave */
+    border-top: 5px solid #333333; /* Detalle de diseño */
+}
+
+/* Alterando la retícula para el artículo principal */
+.articulo-destacado {
+    grid-column: span 2; /* Le decimos que ocupe 2 espacios de ancho */
+    grid-row: span 2; /* Y 2 espacios de alto */
+    background-color: #0077b6; /* Tu color favorito para destacar */
+    color: #ffffff;
+    border-top: none; /* Quitamos el borde negro a este */
+}
+
+/* Detalles de etiquetas */
+.etiqueta {
+    background-color: #ff9800; /* Naranja llamativo */
+    color: #ffffff;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* =========================================
+   4. FLEXBOX (Componentes Internos)
+   ========================================= */
+.autor-info {
+    margin-top: 30px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(255,255,255,0.3); /* Línea separadora */
+    
+    /* Flexbox para alinear la foto con el texto */
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.autor-info img {
+    border-radius: 50%; /* Hace la foto de cuadro a círculo perfecto */
+    border: 2px solid #ffffff;
+}
