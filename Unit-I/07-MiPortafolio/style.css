@@ -101,3 +101,31 @@ footer {
 .modo-oscuro nav a {
     color: #ffffff; /* Los links se vuelven blancos en modo oscuro */
 }
+
+
+@media (max-width: 768px) {
+    
+    /* El header cambia de fila a columna */
+    header {
+        flex-direction: column;
+        gap: 15px; /* Da respiro entre el logo y el menú */
+        padding: 20px;
+    }
+
+    /* El menú también se envuelve si no cabe */
+    nav ul {
+        flex-wrap: wrap; 
+        justify-content: center;
+    }
+
+    /* Las tarjetas (section) ocupan casi todo el ancho, quitamos el tamaño fijo */
+    section {
+        width: 90%;
+        padding: 20px;
+    }
+
+    /* Reducimos imágenes gigantes */
+    img {
+        width: 150px; 
+    }
+}

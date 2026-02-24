@@ -1,0 +1,32 @@
+body{
+    margin: 0;
+}
+/* El Contenedor Padre */
+.navbar {
+    background-color: #0077b6; 
+    padding: 15px 30px;
+    height: 60px;
+    
+    /* LA MAGIA DE FLEXBOX */
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+}
+
+/* Los Hijos */
+.logo {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.enlaces {
+    display: flex; 
+    gap: 20px; /* ¿Qué hace esta propiedad? */
+}
+
+.enlaces a {
+    color: white;
+    text-decoration: none;
+    font-family: sans-serif;
+}

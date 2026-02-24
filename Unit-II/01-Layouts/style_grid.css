@@ -1,0 +1,42 @@
+body {
+    background-color: #f0f4f8;
+    font-family: sans-serif;
+    padding: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+/* EL CONTENEDOR PADRE (La Retícula) */
+.bento-grid {
+    display: grid;
+    /* Creamos 3 columnas de tamaños iguales */
+    grid-template-columns: repeat(3, 1fr);
+    /* Creamos 2 filas (la 1ra más alta que la 2da) */
+    grid-template-rows: 250px 150px;
+    gap: 20px; /* Espacio entre los bloques */
+    width: 800px;
+}
+
+/* LAS CAJAS (Hijos) */
+.bento-item {
+    background-color: white;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 10px 20px rgba(0,119,182,0.1); 
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Alterando las reglas para cajas específicas */
+.caja-1 {
+    /* Esta caja ocupará 2 columnas de ancho */
+    grid-column: span 2; 
+    background-color: #0077b6;
+    color: white;
+}
+
+.caja-4 {
+    /* Esta caja ocupará 2 columnas de ancho */
+    grid-column: span 2;
+}
