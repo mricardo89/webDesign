@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>La Curva de la Vida: Easing</title>
+    <style>
+        /* 1. EL ESCENARIO */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #2b2d42; /* Fondo oscuro para contraste */
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
+
+        .laboratorio {
+            display: flex;
+            gap: 50px;
+            border-bottom: 5px solid #edf2f4; /* El "suelo" */
+            padding-bottom: 20px;
+        }
+
+        .carril {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 400px; /* Altura de la caída */
+        }
+
+        /* 2. DISEÑO DE LAS PELOTAS */
+        .pelota {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin-bottom: auto; /* Empuja el texto hacia abajo */
+        }
+
+        .p1 { background-color: #ef233c; } /* Rojo */
+        .p2 { background-color: #8d99ae; } /* Gris */
+        .p3 { background-color: #0077b6; } /* Azul (El Rebote) */
+
+        /* 3. LA PELÍCULA (Los Keyframes) */
+        /* Todas las pelotas comparten la misma animación de mover el eje Y */
+        @keyframes caer {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(300px); /* Caen 300 pixeles */
+            }
+        }
+
+        /* 4. LA FÍSICA (Timing Functions) */
+        
+        /* Pelota 1: Aburrida, robótica, velocidad constante */
+        .lineal {
+            animation: caer 2s linear infinite alternate;
+        }
+
+        /* Pelota 2: Gravedad realista. Empieza lento, acelera hacia el final */
+        .gravedad {
+            animation: caer 2s ease-in infinite alternate;
+        }
+
+        /* Pelota 3: Efecto elástico/cartoon usando una curva Bezier personalizada */
+        /* Los valores mayores a 1 o menores a 0 hacen que "rebote" fuera de sus límites */
+        .rebote {
+            animation: caer 2s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite alternate;
+        }
+
+        /* Textos explicativos */
+        p {
+            font-weight: bold;
+            margin-top: 20px;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="laboratorio">
+        
+        <div class="carril">
+            <div class="pelota p1 lineal"></div>
+            <p>LINEAR<br><small>(Robótica)</small></p>
+        </div>
+
+        <div class="carril">
+            <div class="pelota p2 gravedad"></div>
+            <p>EASE-IN<br><small>(Gravedad)</small></p>
+        </div>
+
+        <div class="carril">
+            <div class="pelota p3 rebote"></div>
+            <p>CUBIC-BEZIER<br><small>(Elástica)</small></p>
+        </div>
+
+    </div>
+
+</body>
+</html>

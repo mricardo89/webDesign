@@ -1,0 +1,11 @@
+.btn-magico {
+    background-color: #0077b6; 
+    transform: scale(1);
+    /* La magia: cambia TODO en 0.3 segundos suavemente */
+    transition: all 0.3s ease-out; 
+}
+
+.btn-magico:hover {
+    background-color: #00b4d8;
+    transform: scale(1.1); /* Crece un 10% */
+}
