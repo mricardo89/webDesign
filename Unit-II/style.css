@@ -1,0 +1,89 @@
+/* ESTILOS GLOBALES */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #e2e8f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    transition: 0.3s;
+}
+
+/* ---------------------------------------------------
+    Misión 1: CSS Grid (El Layout Principal) 
+    --------------------------------------------------- */
+.tarjeta-producto {
+    background-color: white;
+    width: 800px;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    overflow: hidden;
+    
+    /* ERROR 1: Esta tarjeta debe ser un Grid de 2 columnas de tamaños iguales (fracciones). ¡Repáralo! */
+    display: block; 
+    
+}
+
+/* Imágenes y contenedores (No tocar) */
+.imagen-box {
+    background-color: #0077b6; /* Azul corporativo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    color: white;
+    font-size: 4rem;
+}
+
+.info-box {
+    padding: 40px;
+}
+
+/* ---------------------------------------------------
+    Misión 2: Flexbox (Los Detalles)
+    --------------------------------------------------- */
+.etiquetas {
+    /* ERROR 2: Las etiquetas deben ir una al lado de la otra, con un espacio de 10px entre ellas. Usa Flexbox. */
+    display: block; 
+    
+}
+
+.etiquetas span {
+    background-color: #cbd5e1;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+/* Botones y Textos (No tocar) */
+h1 { margin-top: 0; color: #333; }
+.precio { font-size: 2rem; font-weight: bold; color: #0077b6; }
+
+button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-right: 10px;
+    margin-top: 20px;
+}
+.btn-descuento { background-color: #0077b6; color: white; }
+.btn-tema { background-color: #333; color: white; }
+
+/* Clase de JavaScript para Modo Nocturno */
+.dark-theme {
+    background-color: #1e293b;
+    color: #f8fafc;
+}
+.dark-theme h1 { color: white; }
+
+/* ---------------------------------------------------
+    Misión 3: Diseño Responsivo (Móviles)
+    --------------------------------------------------- */
+/* ERROR 3: Escribe un Media Query para pantallas con un ancho máximo de 768px. 
+    Dentro de él, haz que .tarjeta-producto pase a tener 1 sola columna. */
+
+

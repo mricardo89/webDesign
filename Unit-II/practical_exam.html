@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examen Práctico | Fix the Code</title>
+
+</head>
+<body>
+
+    <div class="tarjeta-producto" id="producto">
+        
+        <div class="imagen-box">
+            📱 </div>
+        
+        <div class="info-box">
+            <h1>Tablet Pro Designer</h1>
+            
+            <div class="etiquetas">
+                <span>Diseño UI/UX</span>
+                <span>128 GB</span>
+            </div>
+            
+            <p class="precio">$<span id="valor-precio">800</span> USD</p>
+            
+            <button class="btn-descuento" onclick="aplicarDescuento()">🎁 Descuento Estudiantil (-$100)</button>
+            <button class="btn-tema" onclick="modoOscuro()">🌙 Modo Nocturno</button>
+        </div>
+
+    </div>
+
+    <script>
+        /* ---------------------------------------------------
+           Misión 4: Manipulación del DOM (Clases)
+           --------------------------------------------------- */
+        function modoOscuro() {
+            // ERROR 4: Atrapa el elemento con el ID "producto". 
+            // Luego, usa classList.toggle para inyectarle la clase "dark-theme".
+            let tarjeta = document.getElementById("INSERTA_EL_ID_AQUI");
+            
+            // Escribe tu código aquí abajo:
+            
+        }
+
+        /* ---------------------------------------------------
+           Misión 5: Lógica y Matemáticas (Variables y Tipos)
+           --------------------------------------------------- */
+        function aplicarDescuento() {
+            // Atrapamos el precio actual del HTML
+            let cajaPrecio = document.getElementById("valor-precio");
+            let precioTexto = cajaPrecio.innerHTML;
+            
+            // ERROR 5: JavaScript está leyendo el precio como Texto. 
+            // Conviértelo a Número, réstale 100 y guarda el resultado en una variable 'nuevoPrecio'.
+            // ¡Cuidado de no restar texto con texto!
+            
+            let nuevoPrecio = precioTexto - "cien"; // ESTO ESTÁ MAL, BÓRRALO Y HAZLO BIEN
+            
+            // Actualizamos el HTML con el resultado matemático correcto
+            cajaPrecio.innerHTML = nuevoPrecio;
+        }
+    </script>
+
+</body>
+</html>
