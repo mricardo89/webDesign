@@ -1,0 +1,93 @@
+/* =========================================
+    1. EL ESCENARIO (Layout con Flexbox)
+    ========================================= */
+body {
+    margin: 0;
+    height: 100vh;
+    background-color: #001f3f; /* Azul noche espacial */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* Empuja todo hacia abajo */
+    align-items: center;
+    font-family: Arial, sans-serif;
+    overflow: hidden; /* Oculta el cohete cuando sale volando */
+}
+
+/* La plataforma del cohete */
+.plataforma {
+    width: 100%;
+    height: 50px;
+    background-color: #333333;
+    border-top: 5px solid #0077b6; /* Detalle en tu color azul favorito */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative; /* Para que el cohete se ubique respecto a la plataforma */
+}
+
+/* =========================================
+    2. EL OBJETO ANIMADO
+    ========================================= */
+.cohete {
+    font-size: 100px; /* Usamos un emoji gigante por simplicidad */
+    position: absolute;
+    bottom: 50px; /* Lo sentamos justo sobre la plataforma */
+    
+    /* Le asignamos la animación de estar en reposo */
+    animation: flotar 2s ease-in-out infinite alternate;
+}
+
+/* =========================================
+    3. LAS ANIMACIONES (Keyframes)
+    ========================================= */
+
+/* Animación 1: Estado de reposo (Respiración) */
+@keyframes flotar {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-15px); }
+}
+
+/* Animación 2: El Despegue Dramático */
+@keyframes volar {
+    0% { transform: translateY(0); }
+    10% { transform: translateY(20px); } /* Anticipación: se agacha un poco antes de saltar */
+    100% { transform: translateY(-1200px); } /* Sale de la pantalla hacia arriba */
+}
+
+/* =========================================
+    4. LA MAGIA DEL TOGGLE (Activada por JS)
+    ========================================= */
+
+/* Cuando el body reciba la clase "despegue", cambiamos las reglas del cohete */
+.despegue .cohete {
+    /* Detenemos el flote y ejecutamos el vuelo */
+    animation: volar 1.5s ease-in forwards; 
+    /* forwards hace que se quede arriba y no regrese al inicio */
+}
+
+/* =========================================
+    5. DISEÑO DEL BOTÓN
+    ========================================= */
+.btn-lanzar {
+    padding: 15px 40px;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    background-color: #ff4136; /* Rojo de emergencia */
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    z-index: 10; /* Para asegurarnos que esté por encima de todo */
+    transition: 0.3s;
+}
+
+.btn-lanzar:hover {
+    background-color: #ff7b70;
+    transform: scale(1.1);
+}
+
+/* Si ya despegó, cambiamos el color del botón usando CSS */
+.despegue .btn-lanzar {
+    background-color: #2ecc40; /* Verde de éxito */
+}

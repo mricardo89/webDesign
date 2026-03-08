@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <title>Reto: El Lanzamiento</title>
+
+</head>
+<body id="escenario">
+
+    <button id="boton-accion" class="btn-lanzar" onclick="iniciarMision()">🚀 LANZAR PROYECTO</button>
+
+    <div class="plataforma">
+        <div class="cohete">🚀</div>
+    </div>
+
+    <script>
+        function iniciarMision() {
+            // 1. Atrapamos a los actores
+            let escenario = document.getElementById("escenario");
+            let boton = document.getElementById("boton-accion");
+
+            // 2. Ejecutamos la clase que detona la animación CSS
+            escenario.classList.toggle("despegue");
+
+            // 3. Condicional lógico visto en la semana 3 para cambiar el texto
+            if (escenario.classList.contains("despegue")) {
+                boton.innerHTML = "✅ MISIÓN COMPLETADA";
+            } else {
+                boton.innerHTML = "🚀 LANZAR PROYECTO";
+            }
+        }
+    </script>
+
+</body>
+</html>

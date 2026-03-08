@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Menú | El Capibara Azul</title>
+
+</head>
+<body>
+    <div id="contenedor-menu">
+
+    </div>
+</body>
+
+
+<script>
+    // UN ARREGLO DE OBJETOS: Una lista de cosas complejas
+    let menu = [
+        { nombre: "Capuchino", precio: 55 },
+        { nombre: "Matcha Latte", precio: 70 },
+        { nombre: "Galleta Choco", precio: 30 }
+    ];
+    console.log(menu[0].precio)
+
+    // El ciclo forEach = "Por cada platillo en el menú, haz esto:"
+    menu.forEach(function(item) {
+        // Diseñamos la tarjeta una sola vez
+        let tarjeta = `
+            <div>
+                <h3>${item.nombre}</h3>
+                <p>$${item.precio} MXN</p>
+            </div>
+        `;
+        // La inyectamos en el HTML
+        document.getElementById("contenedor-menu").innerHTML += tarjeta;
+    });
+
+
+</script>
+
+</html>
