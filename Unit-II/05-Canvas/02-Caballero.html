@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style_1.css">
+    <title>Pizarrón de Storyboarding</title>
+    
+</head>
+<body>
+
+    <h2>Lienzo de Ilustración</h2>
+    <p>Dibuja el boceto del Caballero Capibara</p>
+    
+    <canvas id="pizarra" width="800" height="500"></canvas>
+
+    <div class="controles">
+        <button onclick="limpiarLienzo()">🗑️ Borrar Todo</button>
+    </div>
+
+    <script>
+        // 1. Preparativos del Lienzo
+        const canvas = document.getElementById('pizarra');
+        const ctx = canvas.getContext('2d');
+
+        // Variables de estado (Nuestra memoria para saber qué hace el usuario)
+        let dibujando = false;
+
+        // 👇 RETO: Cambia el diseño de tu pincel aquí
+        ctx.strokeStyle = '#000000'; // Color de la tinta
+        ctx.lineWidth = 3; // Grosor
+        ctx.lineCap = 'round'; // Hace que las puntas de la línea sean redondas
+
+        // 2. La Lógica del Trazo
+        function empezarDibujo(evento) {
+            dibujando = true;
+            ctx.beginPath();
+            // Obtenemos la coordenada exacta donde el usuario hizo clic
+            ctx.moveTo(evento.offsetX, evento.offsetY);
+        }
+
+        function trazarLínea(evento) {
+            // Si el usuario solo está moviendo el mouse sin presionar clic, no hagas nada
+            if (dibujando === false) {
+                return;
+            }
+            // Si está presionando clic, traza la línea a la nueva posición del mouse
+            ctx.lineTo(evento.offsetX, evento.offsetY);
+            ctx.stroke();
+        }
+
+        function detenerDibujo() {
+            dibujando = false;
+        }
+
+        // 3. Los Eventos (Escuchando al Mouse)
+        canvas.addEventListener('mousedown', empezarDibujo); // Cuando aprieto el clic
+        canvas.addEventListener('mousemove', trazarLínea); // Cuando muevo el mouse
+        canvas.addEventListener('mouseup', detenerDibujo); // Cuando suelto el clic
+        canvas.addEventListener('mouseout', detenerDibujo); // Si el mouse se sale del canvas
+
+        // 4. Función extra para el botón
+        function limpiarLienzo() {
+            // Borra un rectángulo del tamaño exacto de todo el canvas
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        }
+    </script>
+</body>
+</html>

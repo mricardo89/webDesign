@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style_2.css">
+    <title>Arte Generativo</title>
+   
+</head>
+<body>
+
+    <h2>El Pincel de Neón</h2>
+    
+    <canvas id="lienzoArte" width="800" height="500"></canvas>
+
+    <div class="panel">
+        <button onclick="limpiar()">Limpiar Lienzo</button>
+        </div>
+
+    <script>
+        const canvas = document.getElementById('lienzoArte');
+        const ctx = canvas.getContext('2d');
+
+        let dibujando = false;
+
+        // Estilo inicial del pincel (¡Modifícalo!)
+        ctx.strokeStyle = '#000000'; 
+        ctx.lineWidth = 5;
+
+        // Lógica de dibujo
+        function empezar(evento) {
+            dibujando = true;
+            ctx.beginPath();
+            
+            // 👇 RETO 1: Cambia estas coordenadas. 
+            // En lugar de usar la posición del mouse, usa el centro del canvas.
+            ctx.moveTo(evento.offsetX, evento.offsetY); 
+        }
+
+        function trazar(evento) {
+            if (dibujando === false) return;
+            
+            // La línea viaja hacia donde está el mouse
+            ctx.lineTo(evento.offsetX, evento.offsetY);
+            ctx.stroke();
+        }
+
+        function detener() {
+            dibujando = false;
+        }
+
+        function limpiar() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        }
+
+        // Eventos
+        canvas.addEventListener('mousedown', empezar);
+        canvas.addEventListener('mousemove', trazar);
+        canvas.addEventListener('mouseup', detener);
+        canvas.addEventListener('mouseout', detener);
+
+    </script>
+</body>
+</html>

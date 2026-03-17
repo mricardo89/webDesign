@@ -1,0 +1,39 @@
+body {
+    background-color: #111111; /* Fondo muy oscuro */
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    margin: 0;
+}
+
+canvas {
+    background-color: #1a1a1a;
+    border: 2px solid #333333;
+    border-radius: 8px;
+    box-shadow: 0 0 40px rgba(0, 255, 255, 0.1);
+    cursor: crosshair;
+}
+
+.panel {
+    margin-top: 20px;
+    display: flex;
+    gap: 15px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #333333;
+    color: white;
+    border: 1px solid #555;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #00ffff;
+    color: black;
+}
