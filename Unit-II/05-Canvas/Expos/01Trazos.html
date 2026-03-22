@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="01Trazos.css">
+    <title>Reto Canvas: Formas Complejas</title>
+</head>
+<body>
+
+    <h2>Laboratorio de Formas Complejas</h2>
+    <p>Punto de partida para el Logo Minimalista</p>
+    
+    <canvas id="lienzo" width="600" height="600"></canvas>
+
+    <script>
+        const canvas = document.getElementById('lienzo');
+        const ctx = canvas.getContext('2d');
+
+        // ==========================================
+        // HERRAMIENTA 1: EL CÍRCULO (arc)
+        // ==========================================
+        
+        ctx.beginPath(); // Siempre iniciamos un nuevo trazo
+        
+        // ctx.arc(x, y, radio, anguloInicio, anguloFin);
+        // NOTA PARA LOS EXPOSITORES: JS usa Radianes. Math.PI * 2 es un círculo completo (360 grados).
+        ctx.arc(300, 300, 100, 0, Math.PI * 2); 
+        
+        // El Panel de Apariencia
+        ctx.fillStyle = "#0077b6"; // Color de relleno (Tu azul favorito)
+        ctx.fill(); // Rellenamos la forma
+        
+        ctx.lineWidth = 5;
+        ctx.strokeStyle = "#023e8a"; // Color del borde
+        ctx.stroke(); // Pintamos el borde
+
+        // ==========================================
+        // HERRAMIENTA 2: LA PLUMA (bezierCurveTo)
+        // ==========================================
+        
+        ctx.beginPath();
+        // Ponemos el lápiz en el punto inicial
+        ctx.moveTo(100, 400); 
+        
+        // ctx.bezierCurveTo(Manejador1_X, Manejador1_Y, Manejador2_X, Manejador2_Y, PuntoFinal_X, PuntoFinal_Y);
+        // NOTA PARA LOS EXPOSITORES: ¡Jueguen con estos números para ver cómo se dobla la curva!
+        ctx.bezierCurveTo(200, 200, 400, 200, 500, 400); 
+        
+        ctx.lineWidth = 8;
+        ctx.strokeStyle = "#ffb703"; // Amarillo mostaza
+        ctx.lineCap = "round"; // Puntas redondeadas
+        ctx.stroke();
+
+        // ==========================================
+        // TU RETO: BORRA ESTO Y CREA TU LOGO/PERSONAJE
+        // ==========================================
+        // Usa arc() y bezierCurveTo() para crear algo increíble.
+
+    </script>
+</body>
+</html>

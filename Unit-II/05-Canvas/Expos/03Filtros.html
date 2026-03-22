@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="03Filters.css">
+    <title>Reto Canvas: Filtros de Imagen</title>
+</head>
+<body>
+
+    <h2>El Cuarto Oscuro Digital</h2>
+    <p>Manipula los valores RGB para crear tus propios filtros.</p>
+    
+    <div class="controles">
+        <button onclick="restaurarFoto()">Foto Original</button>
+        <button onclick="filtroBlancoYNegro()">Filtro B/N</button>
+        <button onclick="miFiltroLoco()">Mi Filtro Custom</button>
+    </div>
+
+    <canvas id="lienzo" width="600" height="400"></canvas>
+
+    <script>
+        const canvas = document.getElementById('lienzo');
+        const ctx = canvas.getContext('2d');
+
+        // 1. CARGAMOS LA FOTOGRAFÍA (No modificar)
+        const foto = new Image();
+        foto.crossOrigin = "Anonymous"; // Permiso para manipular píxeles de internet
+        foto.src = "https://images.unsplash.com/photo-1493246507139-91e8fad9978e?w=600&q=80"; // Foto de paisaje
+        
+        // Cuando la foto cargue, la dibujamos en el lienzo
+        foto.onload = function() {
+            restaurarFoto();
+        };
+
+        function restaurarFoto() {
+            ctx.drawImage(foto, 0, 0, canvas.width, canvas.height);
+        }
+
+        // ==========================================
+        // RETO 1: FILTRO BLANCO Y NEGRO
+        // ==========================================
+        function filtroBlancoYNegro() {
+            // A. Leemos todos los píxeles de la pantalla
+            const mapaDeBits = ctx.getImageData(0, 0, canvas.width, canvas.height);
+            const pixeles = mapaDeBits.data; // ¡Este es un arreglo de millones de números!
+
+            // B. Recorremos el arreglo saltando de 4 en 4 (Rojo, Verde, Azul, Alpha)
+            for (let i = 0; i < pixeles.length; i += 4) {
+                let r = pixeles[i];     // Canal Rojo
+                let g = pixeles[i + 1]; // Canal Verde
+                let b = pixeles[i + 2]; // Canal Azul
+                // pixeles[i + 3] es la transparencia (Alpha), la dejaremos intacta.
+
+                // 👇 TU MISIÓN: Calcula el promedio de R, G y B. 
+                // Luego, asígnale ese promedio a los 3 canales para quitarles el color.
+                
+                // let promedio = ???
+                
+                // pixeles[i] = promedio;
+                // pixeles[i+1] = promedio;
+                // pixeles[i+2] = promedio;
+            }
+
+            // C. Volvemos a pintar los píxeles alterados en el lienzo
+            ctx.putImageData(mapaDeBits, 0, 0);
+        }
+
+        // ==========================================
+        // RETO 2: TU FILTRO PERSONALIZADO
+        // ==========================================
+        function miFiltroLoco() {
+            restaurarFoto(); // Limpiamos primero
+            const mapaDeBits = ctx.getImageData(0, 0, canvas.width, canvas.height);
+            const pixeles = mapaDeBits.data;
+
+            for (let i = 0; i < pixeles.length; i += 4) {
+                // 👇 TU MISIÓN: Vuelve loco a este filtro. 
+                // ¿Qué pasa si multiplicas el rojo por 2? ¿Qué pasa si restas 255 al verde?
+                // ¡Experimenta!
+
+            }
+            ctx.putImageData(mapaDeBits, 0, 0);
+        }
+    </script>
+</body>
+</html>

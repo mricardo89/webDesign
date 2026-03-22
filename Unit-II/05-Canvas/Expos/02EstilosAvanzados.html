@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="02EstilosAvan.css">
+    <title>Reto Canvas: Estilos y Fusión</title>
+</head>
+<body>
+
+    <h2>Laboratorio de Apariencia y Color</h2>
+    <p>Aplica Degradados, Resplandores y Modos de Fusión a estas formas.</p>
+    
+    <canvas id="lienzo" width="600" height="400"></canvas>
+
+    <script>
+        const canvas = document.getElementById('lienzo');
+        const ctx = canvas.getContext('2d');
+
+        // ==========================================
+        // RETO 1: SOMBRAS (Resplandor / Glow)
+        // ==========================================
+        // PISTA PARA EXPOSITORES: Descomenten estas líneas y jueguen con los valores
+        
+        // ctx.shadowBlur = 30; // ¿Qué tan difuminada es la sombra?
+        // ctx.shadowColor = "magenta"; // Color del resplandor
+
+        // ==========================================
+        // RETO 2: LOS MODOS DE FUSIÓN (Photoshop en Código)
+        // ==========================================
+        // PISTA: Por defecto es "source-over" (Uno encima del otro). 
+        // Cámbienlo a "screen", "multiply", "overlay" o "destination-out".
+        
+        // ctx.globalCompositeOperation = "screen"; 
+
+        // ==========================================
+        // RETO 3: DEGRADADOS (Gradients)
+        // ==========================================
+        // PISTA: Creen un gradiente lineal. Las coordenadas son (X_inicio, Y_inicio, X_fin, Y_fin)
+        
+        /* let miGradiente = ctx.createLinearGradient(100, 100, 300, 300);
+        miGradiente.addColorStop(0, "magenta"); // Color al 0%
+        miGradiente.addColorStop(1, "cyan");    // Color al 100%
+        */
+
+        // --- DIBUJO DEL PRIMER CÍRCULO ---
+        ctx.beginPath();
+        ctx.arc(250, 200, 100, 0, Math.PI * 2);
+        
+        // ¡RETO! Cambien este color plano por su variable 'miGradiente'
+        ctx.fillStyle = "red"; 
+        ctx.fill();
+
+        // --- DIBUJO DEL SEGUNDO CÍRCULO ---
+        ctx.beginPath();
+        ctx.arc(350, 200, 100, 0, Math.PI * 2);
+        
+        // ¡RETO! Creen otro gradiente o usen un color distinto para ver cómo se mezclan en el centro
+        ctx.fillStyle = "blue";
+        ctx.fill();
+
+    </script>
+</body>
+</html>

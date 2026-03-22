@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Reto Canvas: Animación Fluida</title>
+</head>
+<body>
+
+    <h2>Motor de Partículas</h2>
+    <p>Convierte esta partícula solitaria en un enjambre usando un Arreglo (Array).</p>
+    
+    <canvas id="lienzo" width="800" height="500"></canvas>
+
+    <script>
+        const canvas = document.getElementById('lienzo');
+        const ctx = canvas.getContext('2d');
+
+        // ==========================================
+        // LA PARTÍCULA SOLITARIA (Datos)
+        // ==========================================
+        let posX = 100;
+        let posY = 250;
+        let velocidadX = 4; // Se mueve 4 pixeles a la derecha por frame
+        let velocidadY = 3; // Se mueve 3 pixeles hacia abajo por frame
+        let radio = 20;
+
+        // 👇 RETO PARA EXPOSITORES: 
+        // 1. Borren estas variables sueltas.
+        // 2. Creen un Arreglo llamado 'particulas' = []
+        // 3. Llenen ese arreglo con múltiples Objetos {x: 10, y: 10, velX: 2, velY: 2}
+
+        // ==========================================
+        // EL DIRECTOR DE CÁMARA (El Bucle de Animación)
+        // ==========================================
+        function animar() {
+            
+            // PASO 1: BORRAR EL PIZARRÓN (Si quitan esto, la pelota dejará un rastro)
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // PASO 2: DIBUJAR LA ESCENA
+            // 👇 RETO: Si crearon un Arreglo, aquí deben usar un forEach para dibujar TODAS las partículas
+            ctx.beginPath();
+            ctx.arc(posX, posY, radio, 0, Math.PI * 2);
+            ctx.fillStyle = "#00ffff"; // Cyan
+            ctx.fill();
+
+            // PASO 3: ACTUALIZAR LA LÓGICA (Mover para el siguiente cuadro)
+            posX = posX + velocidadX;
+            posY = posY + velocidadY;
+
+            // FÍSICA BÁSICA: El Rebote (Si toca los bordes, invierte su velocidad)
+            if (posX + radio > canvas.width || posX - radio < 0) {
+                velocidadX = velocidadX * -1; 
+            }
+            if (posY + radio > canvas.height || posY - radio < 0) {
+                velocidadY = velocidadY * -1;
+            }
+
+            // PASO 4: PEDIR EL SIGUIENTE CUADRO AL NAVEGADOR (Magia pura)
+            // Esto le dice al navegador: "En cuanto estés listo para pintar otra vez, vuelve a llamar a esta función"
+            requestAnimationFrame(animar);
+        }
+
+        // ¡Acción! Iniciamos la película
+        animar();
+
+    </script>
+</body>
+</html>
