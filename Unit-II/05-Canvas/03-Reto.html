@@ -14,17 +14,36 @@
 
     <div class="panel">
         <button onclick="limpiar()">Limpiar Lienzo</button>
+
+        <button onclick="changeColor()" id="color-changer">Cambiar Color</button>
         </div>
 
     <script>
         const canvas = document.getElementById('lienzoArte');
         const ctx = canvas.getContext('2d');
+        const buttonColor = getElementById("color-changer")
 
         let dibujando = false;
 
         // Estilo inicial del pincel (¡Modifícalo!)
-        ctx.strokeStyle = '#000000'; 
+        let colores = ["#5054bf","##bd50bf","##cff084"]
+
+        ctx.strokeStyle = colores[0]; 
+        
         ctx.lineWidth = 5;
+
+
+        let idx=0;
+        function changeColor()
+        {
+            ctx.strokeStyle = colores[idx];
+
+            idx%3;
+            
+        }
+
+        buttonColor.addEventListener("click", );
+
 
         // Lógica de dibujo
         function empezar(evento) {
@@ -33,7 +52,8 @@
             
             // 👇 RETO 1: Cambia estas coordenadas. 
             // En lugar de usar la posición del mouse, usa el centro del canvas.
-            ctx.moveTo(evento.offsetX, evento.offsetY); 
+            // ctx.moveTo(evento.offsetX, evento.offsetY); 
+            ctx.moveTo(400, 250); 
         }
 
         function trazar(evento) {

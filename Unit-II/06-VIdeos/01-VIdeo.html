@@ -1,0 +1,13 @@
+<video src="mi-video.mp4" controls></video>
+
+<video id="miPelicula" src="mi-video.mp4" width="600"></video>
+<button onclick="reproducir()">Play</button>
+<button onclick="pausar()">Pausa</button>
+
+<script>
+    let video = document.getElementById("miPelicula");
+
+    // La API del navegador nos regala estas funciones nativas:
+    function reproducir() { video.play(); }
+    function pausar() { video.pause(); }
+</script>

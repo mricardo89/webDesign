@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <title>Reto: Reproductor Premium</title>
+</head>
+<body>
+
+    <div class="contenedor-video">
+        
+        <video id="cine" src="https://www.w3schools.com/html/mov_bbb.mp4" loop></video>
+        
+        <div class="controles-ui">
+            <button onclick="accionPlay()">Play</button>
+            <button onclick="accionPausa()">Pausar</button>
+            <button onclick="accionMute()">Desctivar sonido</button>
+            </div>
+
+    </div>
+
+    <script>
+        // 1. Atrapamos el video
+        const miVideo = document.getElementById("cine");
+
+        // 2. Funciones de la API Multimedia
+        function accionPlay() {
+            miVideo.play();
+        }
+
+        function accionPausa() {
+            miVideo.pause();
+        }
+
+        function accionMute() {
+            // El atributo muted es un Booleano (true/false)
+            // Si está true, lo volvemos false, y viceversa.
+            // 👇 RETO 3: Cambia el texto del boton "Desctivar sonido" a "Activar sonido" y viceversa
+            if (miVideo.muted === false) {
+                miVideo.muted = true;
+            } else {
+                miVideo.muted = false;
+            }
+        }
+
+        // 👇 RETO 4: Crea aquí la función para el "Modo Cine" usando document.body.classList.toggle
+        
+    </script>
+</body>
+</html>

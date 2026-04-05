@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radar de Geolocalización</title>
+    <style>
+        /* =========================================
+           1. DISEÑO GLOBAL Y FONDOS
+           ========================================= */
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Courier New', Courier, monospace; /* Fuente estilo computadora / código */
+            background-color: #0b0f19; /* Azul muy oscuro casi negro */
+            color: #ffffff;
+        }
+
+        /* =========================================
+           2. LA TARJETA (GLASSMORPHISM CYBERPUNK)
+           ========================================= */
+        .tarjeta-radar {
+            background: rgba(16, 25, 43, 0.8);
+            border: 1px solid #1f3a5f;
+            box-shadow: 0 0 20px rgba(0, 255, 204, 0.1);
+            border-radius: 15px;
+            padding: 40px;
+            width: 350px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* La animación del radar (Repaso semana 6) */
+        .icono-radar {
+            font-size: 50px;
+            margin-bottom: 10px;
+            animation: palpitar 2s infinite alternate;
+        }
+
+        @keyframes palpitar {
+            0% { text-shadow: 0 0 10px #00ffcc; transform: scale(1); }
+            100% { text-shadow: 0 0 30px #00ffcc; transform: scale(1.1); }
+        }
+
+        h2 {
+            margin: 0 0 10px 0;
+            color: #00ffcc; /* Cyan brillante */
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .estado {
+            color: #8892b0;
+            font-size: 0.9rem;
+            margin-bottom: 30px;
+            min-height: 20px;
+        }
+
+        /* =========================================
+           3. LAS COORDENADAS (FLEXBOX)
+           ========================================= */
+        .coordenadas {
+            display: flex;
+            justify-content: space-between;
+            background-color: #06090f;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border-left: 4px solid #00ffcc;
+        }
+
+        .caja-coord {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+        }
+
+        .caja-coord span {
+            font-size: 0.7rem;
+            color: #8892b0;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .caja-coord strong {
+            font-size: 1.2rem;
+            color: #ffffff;
+        }
+
+        /* =========================================
+           4. EL BOTÓN
+           ========================================= */
+        button {
+            background-color: transparent;
+            color: #00ffcc;
+            border: 2px solid #00ffcc;
+            padding: 12px 20px;
+            border-radius: 5px;
+            font-family: inherit;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.3s;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #00ffcc;
+            color: #0b0f19;
+            box-shadow: 0 0 15px #00ffcc;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="tarjeta-radar">
+        <div class="icono-radar">🛰️</div>
+        <h2>Enlace Satelital</h2>
+        <div class="estado" id="texto-estado">Esperando inicialización...</div>
+
+        <div class="coordenadas">
+            <div class="caja-coord">
+                <span>LATITUD</span>
+                <strong id="val-lat">--.----</strong>
+            </div>
+            <div class="caja-coord">
+                <span>LONGITUD</span>
+                <strong id="val-lon">--.----</strong>
+            </div>
+        </div>
+
+        <button onclick="iniciarRastreo()" id="btn-rastreo">Activar Rastreo</button>
+    </div>
+
+    <script>
+        // =========================================
+        // LÓGICA DE GEOLOCALIZACIÓN
+        // ==========================================
+
+        function iniciarRastreo() {
+            let estado = document.getElementById("texto-estado");
+            
+            // 1. Feedback visual inmediato
+            estado.innerHTML = "Solicitando permisos al usuario...";
+            estado.style.color = "#8892b0"; // Color gris por defecto
+
+            // 2. Verificamos si el navegador del usuario soporta esta tecnología
+            if (navigator.geolocation) {
+                // 3. Ejecutamos la API. Pide dos funciones: una para Éxito y otra para Error
+                navigator.geolocation.getCurrentPosition(mostrarUbicacion, manejarError);
+            } else {
+                estado.innerHTML = "Tu navegador es muy antiguo y no soporta GPS.";
+            }
+        }
+
+        // Función que se ejecuta SOLO si el usuario le da "Permitir"
+        function mostrarUbicacion(posicion) {
+            // El navegador nos inyecta el objeto "posicion" lleno de datos
+            let latitud = posicion.coords.latitude;
+            let longitud = posicion.coords.longitude;
+
+            // Inyectamos los números en el HTML (usamos toFixed(4) para recortar a 4 decimales)
+            document.getElementById("val-lat").innerHTML = latitud.toFixed(4);
+            document.getElementById("val-lon").innerHTML = longitud.toFixed(4);
+
+            // Cambiamos el mensaje de éxito
+            let estado = document.getElementById("texto-estado");
+            estado.innerHTML = "¡Conexión establecida!";
+            estado.style.color = "#00ffcc"; // Verde/Cyan de éxito
+        }
+
+        // Función que se ejecuta SOLO si el usuario le da "Bloquear" o falla el GPS
+        function manejarError(error) {
+            let estado = document.getElementById("texto-estado");
+            estado.style.color = "#ff3366"; // Rojo de emergencia
+
+            // Analizamos el código de error que nos da el navegador
+            if (error.code === 1) {
+                estado.innerHTML = "PERMISO DENEGADO. Estás fuera del radar.";
+            } else if (error.code === 2) {
+                estado.innerHTML = "ERROR: La señal GPS no está disponible.";
+            } else {
+                estado.innerHTML = "ERROR DESCONOCIDO.";
+            }
+        }
+    </script>
+</body>
+</html>

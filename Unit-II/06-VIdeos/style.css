@@ -1,0 +1,42 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    transition: background-color 0.5s ease; /* Para el modo cine */
+}
+
+/* Contenedor principal para poder usar position absolute en los controles */
+.contenedor-video {
+    position: relative;
+    width: 800px;
+    border-radius: 15px;
+    overflow: hidden; /* Para que el video no se salga de las esquinas redondas */
+    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+}
+
+/* El video en sí */
+video {
+    width: 100%;
+    display: block; /* Quita el margen fantasma de abajo */
+}
+
+/* 👇 RETO 1: Diseña esta barra. 
+    Ponla encima del video, al fondo, y haz que se vea "Premium" */
+.controles-ui {
+    background-color: #cccccc; /* Cambia esto */
+    padding: 10px;
+}
+
+/* 👇 RETO 2: Diseña los botones */
+button {
+    margin: 5px;
+}
+
+/* ESTILO MODO CINE (Clase para JS) */
+.luces-apagadas {
+    background-color: #000000;
+}
