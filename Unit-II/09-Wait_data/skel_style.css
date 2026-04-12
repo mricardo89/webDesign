@@ -1,0 +1,64 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.tarjeta {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    width: 300px;
+    text-align: center;
+    min-height: 200px;
+}
+
+/* LA MAGIA DEL SKELETON: Animación de Pulso */
+.esqueleto {
+    background-color: #e2e8f0;
+    border-radius: 4px;
+    animation: pulso 1.5s infinite ease-in-out;
+    margin: 0 auto; /* Para centrar */
+}
+
+@keyframes pulso {
+    0% { opacity: 0.5; }
+    50% { opacity: 1; }
+    100% { opacity: 0.5; }
+}
+
+/* Dando forma a los huesos del esqueleto */
+.esq-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 25px;
+}
+
+.esq-titulo {
+    width: 60%;
+    height: 25px;
+    margin-bottom: 15px;
+}
+
+.esq-texto {
+    width: 80%;
+    height: 15px;
+}
+
+/* CLASE MÁGICA PARA OCULTAR COSAS */
+.oculto {
+    display: none !important;
+}
+
+/* Estilo del contenido real */
+.contenido-real img {
+    width: 100px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+}

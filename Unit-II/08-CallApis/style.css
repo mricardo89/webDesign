@@ -1,0 +1,68 @@
+body {
+    background-color: #2b2d42;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+/* El contenedor vacío que JS va a llenar */
+#tarjeta-contenedor {
+    background-color: #8d99ae;
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    min-width: 300px;
+    min-height: 350px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+/* Estilos para el HTML que va a inyectar JS */
+.avatar-api {
+    width: 200px;
+    border-radius: 50%;
+    border: 5px solid #edf2f4;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.nombre-api {
+    color: #2b2d42;
+    font-size: 1.8rem;
+    margin: 15px 0 5px 0;
+}
+
+.estado-api {
+    background-color: #ef233c;
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    display: inline-block;
+}
+
+/* El Botón */
+button {
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #2b2d42;
+    background-color: #00ffcc; /* Un tono neón para resaltar */
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.05);
+    background-color: #00e6b8;
+}

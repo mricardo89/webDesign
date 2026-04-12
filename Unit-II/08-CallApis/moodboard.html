@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="mood_style.css">
+    <title>Inspiración Asíncrona</title>
+</head>
+<body>
+
+    <div id="frase-contenedor">
+        <h1 id="texto-frase">"Haz clic para encontrar inspiración"</h1>
+        <p id="autor-frase"></p>
+    </div>
+
+    <button id="btn-inspirar" onclick="obtenerFrase()">✨ Dame una frase</button>
+
+    <script>
+        function obtenerFrase() {
+            const boton = document.getElementById("btn-inspirar");
+            const texto = document.getElementById("texto-frase");
+            
+            // UX: Desactivar botón mientras esperamos
+            boton.innerHTML = "Consultando a las musas...";
+            boton.disabled = true;
+
+            // API de frases célebres (en inglés, pero sirve para el ejemplo)
+            fetch('http://api.quotable.io/random')
+                .then(response => response.json())
+                .then(data => {
+                    // Actualizamos el diseño con los datos reales
+                    texto.innerHTML = `"${data.content}"`;
+                    document.getElementById("autor-frase").innerHTML = `- ${data.author}`;
+                    
+                    // Restauramos el botón
+                    boton.innerHTML = "✨ Dame otra frase";
+                    boton.disabled = false;
+                })
+                .catch(error => {
+                    texto.innerHTML = "Hubo un error en la conexión.";
+                    boton.disabled = false;
+                });
+        }
+    </script>
+</body>
+</html>

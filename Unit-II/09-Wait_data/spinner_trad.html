@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="spin_style.css">
+    <title>Carga con Spinner</title>
+</head>
+<body>
+
+    <div class="tarjeta">
+        <div id="estado-carga" class="spinner"></div>
+
+        <div id="estado-listo" class="contenido-real oculto">
+            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Foto de perfil">
+            <h2>Ana Martínez</h2>
+            <p>Diseñadora UI/UX</p>
+        </div>
+    </div>
+
+    <script>
+        // Simulador de Asincronía (Fingimos que la API tarda 3 segundos)
+        setTimeout(function() {
+            // 1. Atrapamos ambos estados
+            const carga = document.getElementById("estado-carga");
+            const listo = document.getElementById("estado-listo");
+
+            // 2. Apagamos el spinner y encendemos el contenido
+            carga.classList.add("oculto");
+            listo.classList.remove("oculto");
+
+        }, 3000); // 3000 milisegundos = 3 segundos
+    </script>
+
+</body>
+</html>

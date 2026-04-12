@@ -1,0 +1,22 @@
+<script>
+    function cargarDatos() {
+    // 1. Mostramos el esqueleto inmediatamente
+    mostrarSkeleton(true);
+    
+    fetch('https://api.ejemplo.com/fotos')
+        .then(res => {
+            if (!res.ok) throw Error("Servidor caído"); // Forzamos el error si algo falla
+            return res.json();
+        })
+        .then(datos => {
+            dibujarTarjetas(datos);
+        })
+        .catch(err => {
+            mostrarPantallaError(); // Si falla el internet, vamos al 'Plan B'
+        })
+        .finally(() => {
+            // 4. Pase lo que pase, quitamos el esqueleto al final
+            mostrarSkeleton(false);
+        });
+    }
+</script>

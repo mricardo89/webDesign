@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <title>Conexión API | Fetch</title>
+</head>
+<body>
+
+    <div id="tarjeta-contenedor">
+        <!-- Lo que vamos a cambiar -->
+        <p>Aún no hay datos. Presiona el botón.</p> 
+    </div>
+
+    <button onclick="llamarAPI()">📡 Traer Personaje Aleatorio</button>
+
+    <script>
+        function llamarAPI() {
+            const contenedor = document.getElementById("tarjeta-contenedor");
+            
+            // 1. UX: Mostramos al usuario que estamos cargando
+            contenedor.innerHTML = "<p>⏳ Viajando por el multiverso...</p>";
+
+            // 2. Generamos un número aleatorio del 1 al 826 (Total de personajes)
+            let idAleatorio = Math.floor(Math.random() * 826) + 1;
+
+            // 3. Enviamos a nuestro "mensajero" a la URL de la API
+            fetch('https://rickandmortyapi.com/api/character/' + idAleatorio)
+                .then(respuesta => respuesta.json()) // Desempaquetamos el formato JSON
+                .then(datos => {
+                    
+           
+                    // 4. Inyectamos nuestro diseño usando Plantillas Literales (Semana 7)
+                    contenedor.innerHTML = `
+                        <div>
+                            <img src="${datos.image}" alt="Foto de ${datos.name}" class="avatar-api">
+                            <h2 class="nombre-api">${datos.name}</h2>
+                            <span class="estado-api">Especie: ${datos.species}</span>
+                            <p style="color: #2b2d42; font-weight: bold;">Origen: ${datos.origin.name}</p>
+                        </div>
+                    `;
+
+                    console.log(datos)
+
+                })
+                .catch(error => {
+                    // 5. Manejo de errores (Si se cae el internet)
+                    contenedor.innerHTML = "<p>❌ Hubo un error en la Matrix.</p>";
+                });
+        }
+    </script>
+</body>
+</html>
