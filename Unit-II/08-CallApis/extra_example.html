@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Refuerzo: Parámetros de API</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; background: #f4f4f9; }
+        .grid-usuarios { display: flex; gap: 20px; }
+        .tarjeta { background: white; padding: 20px; border-radius: 10px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        img { border-radius: 50%; }
+    </style>
+</head>
+<body>
+
+    <h2>Lista de Usuarias (Filtrada desde la API)</h2>
+    <div id="contenedor" class="grid-usuarios"></div>
+    <button onclick="pedirDatosExactos()">Traer Datos</button>
+
+    <script>
+        function pedirDatosExactos() {
+            // 1. LA URL HACKEADA (La instrucción específica)
+            const urlPerfecta = 'https://randomuser.me/api/?results=3&gender=female&nat=mx,es';
+
+            fetch(urlPerfecta)
+                .then(respuesta => respuesta.json())
+                .then(datos => {
+                    const caja = document.getElementById("contenedor");
+                    caja.innerHTML = ""; // Limpiamos antes de imprimir
+
+                    // 2. EL ARREGLO ESTÁ DENTRO DE "datos.results"
+                    let listaDeUsuarios = datos.results;
+
+                    // 3. EL CICLO
+                    listaDeUsuarios.forEach(function(usuario) {
+                        caja.innerHTML += `
+                            <div class="tarjeta">
+                                <img src="${usuario.picture.large}" alt="Foto">
+                                <h3>${usuario.name.first} ${usuario.name.last}</h3>
+                                <p>País: ${usuario.nat}</p>
+                            </div>
+                        `;
+                    });
+                })
+                .catch(error => console.log("Error en la petición", error));
+        }
+    </script>
+</body>
+</html>

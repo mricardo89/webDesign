@@ -1,0 +1,65 @@
+/* ESTILOS GLOBALES */
+body {
+    background-color: #1a1a24;
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+/* ==========================================
+    RETO 1: MAQUETACIÓN Y SKELETON
+    ========================================== */
+.credencial {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    width: 400px;
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(0,255,200,0.1);
+    
+    /* 👇 APLICA CSS GRID AQUÍ para organizar el avatar y los datos */
+    
+}
+
+/* Diseño del Skeleton Screen */
+.skeleton {
+    background-color: #333;
+    border-radius: 5px;
+    /* 👇 CREA TU ANIMACIÓN DE PULSO Y APLÍCALA AQUÍ */
+    
+}
+
+.oculto { display: none !important; }
+
+/* Estilos visuales de la tarjeta */
+#avatar-img { width: 100px; border-radius: 50%; border: 3px solid #00ffcc; }
+.dato-label { font-size: 0.7rem; color: #00ffcc; margin-top: 10px; }
+.dato-valor { font-size: 1.2rem; margin: 0; }
+
+button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #00ffcc;
+    color: #1a1a24;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+button:hover { background-color: #ffffff; }
+
+/* Canvas Holograma */
+#holograma {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+}

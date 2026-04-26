@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <title>Reto Integrador: ID Aumentada</title>
+</head>
+<body>
+
+    <audio id="sonido-scan" src="https://www.soundjay.com/buttons/sounds/button-09.mp3"></audio>
+
+    <div class="credencial">
+        <canvas id="holograma" width="100" height="100"></canvas>
+
+        <div id="estado-carga">
+            <div class="skeleton" style="width: 100px; height: 100px; border-radius: 50%;"></div>
+            <div class="skeleton" style="width: 80%; height: 20px; margin-top: 15px;"></div>
+            <div class="skeleton" style="width: 50%; height: 15px; margin-top: 10px;"></div>
+        </div>
+
+        <div id="estado-listo" class="oculto">
+            <img id="avatar-img" src="" alt="Avatar">
+            
+            <p class="dato-label">NOMBRE DE ACCESO</p>
+            <p class="dato-valor" id="txt-nombre">---</p>
+            
+            <p class="dato-label">ORIGEN / BASE</p>
+            <p class="dato-valor" id="txt-origen">---</p>
+
+            <p class="dato-label">COORDENADAS DE ACCESO (GPS)</p>
+            <p class="dato-valor" id="txt-gps">Calculando...</p>
+        </div>
+    </div>
+
+    <button onclick="iniciarEscaneo()">Generar Identidad</button>
+
+    <script>
+        function iniciarEscaneo() {
+            // 1. Mostrar estado de carga
+            document.getElementById("estado-carga").classList.remove("oculto");
+            document.getElementById("estado-listo").classList.add("oculto");
+
+            // ==========================================
+            // RETO 2: FETCH API Y DATOS (Semanas 7 y 10)
+            // ==========================================
+            fetch('https://randomuser.me/api/')
+                .then(respuesta => respuesta.json())
+                .then(datos => {
+                    let usuario = datos.results[0]; // El objeto principal
+
+                    // 👇 INYECTA LOS DATOS EN EL DOM
+                    // Tip: usa usuario.picture.large, usuario.name.first, usuario.location.country
+                    
+                    
+                    
+                    // Mostramos la interfaz lista
+                    document.getElementById("estado-carga").classList.add("oculto");
+                    document.getElementById("estado-listo").classList.remove("oculto");
+
+                    // ==========================================
+                    // RETO 5: AUDIO (Semana 9)
+                    // ==========================================
+                    // 👇 Reproduce el sonido de la etiqueta <audio>
+                    
+
+                    // Lanzamos funciones secundarias
+                    obtenerUbicacion();
+                    dibujarHolograma();
+                })
+                .catch(error => alert("Error de conexión en el servidor principal."));
+        }
+
+        // ==========================================
+        // RETO 3: GEOLOCALIZACIÓN (Semana 9)
+        // ==========================================
+        function obtenerUbicacion() {
+            // 👇 Usa navigator.geolocation para obtener latitud y longitud.
+            // Escríbelo en el elemento "txt-gps"
+            
+        }
+
+        // ==========================================
+        // RETO 4: CANVAS (Semana 8)
+        // ==========================================
+        function dibujarHolograma() {
+            const canvas = document.getElementById("holograma");
+            const ctx = canvas.getContext("2d");
+            
+            // 👇 Usa arc(), stroke() y colores neón para dibujar un "Sello de Seguridad" abstracto
+            
+        }
+    </script>
+
+</body>
+</html>
