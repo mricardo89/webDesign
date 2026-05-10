@@ -1,3 +1,6 @@
 *.zip
 *.webm
 Unit-III/01-MyFirstAPP_nodejs/node_modules
+Unit-III/02-Vite/poster-vivo/node_modules
+Unit-III/03-MyFirstAPI/frontend/node_modules
+Unit-III/03-MyFirstAPI/backend/node_modules
